@@ -13,18 +13,18 @@ export interface WorkflowsSectionProps {
 }
 
 export function WorkflowsSection({ workflows }: WorkflowsSectionProps) {
-  const [activeNodeId, setActiveNodeId] = useState<string | null>(null);
+  const [activeNodeId, setActiveNodeId] = useState<string | undefined>(undefined);
   const [expandedWorkflowId, setExpandedWorkflowId] = useState<string | null>(
     workflows.length > 0 ? workflows[0].id : null
   );
 
   const handleNodeClick = (nodeId: string) => {
-    setActiveNodeId(activeNodeId === nodeId ? null : nodeId);
+    setActiveNodeId(activeNodeId === nodeId ? undefined : nodeId);
   };
 
   const handleWorkflowToggle = (workflowId: string) => {
     setExpandedWorkflowId(expandedWorkflowId === workflowId ? null : workflowId);
-    setActiveNodeId(null);
+    setActiveNodeId(undefined);
   };
 
   return (
