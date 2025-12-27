@@ -133,23 +133,13 @@ export function VaultDoor({ onUnlock, onEnter, isUnlocked, isReturningVisitor = 
               className="mb-4 md:mb-6 text-sm md:text-lg tracking-wide text-center px-4 font-semibold"
               style={{
                 color: 'var(--text)',
+                fontSize: isMobile ? '0.7rem' : '1.5rem',
               }}
             >
               AI-Powered Operations for Dallas-Fort Worth Businesses
             </motion.p>
 
-            {/* Subheadline */}
-            <motion.p
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="mb-6 md:mb-8 text-xs md:text-base text-center px-4 max-w-2xl"
-              style={{
-                color: 'var(--text-secondary)',
-              }}
-            >
-              Automate your workflows, reduce costs by 40-80%, and scale without adding headcount
-            </motion.p>
+
             <br/>
 
             {/* Enhanced Click to Enter CTA */}
