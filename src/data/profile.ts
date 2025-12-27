@@ -53,8 +53,8 @@ export const expertise: PortfolioContent['expertise'] = {
 
 export const contact: PortfolioContent['contact'] = {
   email: 'hello@prisiops.com',
-  linkedin: 'https://linkedin.com/company/prisi-ops',
-  calendly: 'https://calendly.com/prisi-ops/consultation',
+  linkedin: 'https://linkedin.com/company/prisiops',
+  calendly: 'https://calendly.com/prisiops/30min',
 };
 
 export default { profile, expertise, contact };
