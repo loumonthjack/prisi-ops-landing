@@ -1,0 +1,1 @@
+export { CaseStudyDetail } from './CaseStudyDetail';

@@ -1,0 +1,455 @@
+@import "tailwindcss";
+
+/* Minimalist Luxury Design System - Refined Elegance */
+@theme {
+  /* Dark Theme - Pure Black & Subtle Grays */
+  --color-dark-bg: #000000;
+  --color-dark-surface: #0a0a0a;
+  --color-dark-border: #1a1a1a;
+  --color-dark-text: #ffffff;
+  --color-dark-text-secondary: #a0a0a0;
+  --color-dark-text-muted: #666666;
+  --color-dark-accent: #ffffff;
+
+  /* Light Theme - Pure White & Subtle Grays */
+  --color-light-bg: #ffffff;
+  --color-light-surface: #fafafa;
+  --color-light-border: #e5e5e5;
+  --color-light-text: #000000;
+  --color-light-text-secondary: #525252;
+  --color-light-text-muted: #999999;
+  --color-light-accent: #000000;
+
+  /* Refined Typography - Minimalist Heritage */
+  --font-display: 'DM Serif Display', Georgia, serif;
+  --font-body: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'IBM Plex Mono', 'SF Mono', Consolas, monospace;
+
+  /* Metallic Gradients - Theme-Aware */
+  --metallic-gradient-dark: linear-gradient(180deg, #e8e8e8 0%, #a0a0a0 50%, #c0c0c0 100%);
+  --metallic-shadow-dark: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+  --metallic-gradient-light: linear-gradient(180deg, #8b7355 0%, #5d4a37 50%, #6b5744 100%);
+  --metallic-shadow-light: drop-shadow(0 2px 4px rgba(255,255,255,0.5));
+
+  /* Trend Colors - Theme-Aware */
+  --trend-positive-dark: #10b981;
+  --trend-negative-dark: #ef4444;
+  --trend-positive-light: #059669;
+  --trend-negative-light: #dc2626;
+}
+
+/* Base Styles - Refined Minimalism */
+:root {
+  font-family: var(--font-body);
+  line-height: 1.6;
+  font-weight: 400;
+  font-size: 16px;
+
+  /* Dark theme by default */
+  --bg: var(--color-dark-bg);
+  --surface: var(--color-dark-surface);
+  --border: var(--color-dark-border);
+  --text: var(--color-dark-text);
+  --text-secondary: var(--color-dark-text-secondary);
+  --text-muted: var(--color-dark-text-muted);
+  --accent: var(--color-dark-accent);
+
+  /* Metallic gradients */
+  --metallic-gradient: var(--metallic-gradient-dark);
+  --metallic-shadow: var(--metallic-shadow-dark);
+
+  /* Trend colors */
+  --trend-positive: var(--trend-positive-dark);
+  --trend-negative: var(--trend-negative-dark);
+
+  background-color: var(--bg);
+  color: var(--text);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  letter-spacing: -0.01em;
+}
+
+/* Light Theme */
+:root[data-theme="light"] {
+  --bg: var(--color-light-bg);
+  --surface: var(--color-light-surface);
+  --border: var(--color-light-border);
+  --text: var(--color-light-text);
+  --text-secondary: var(--color-light-text-secondary);
+  --text-muted: var(--color-light-text-muted);
+  --accent: var(--color-light-accent);
+
+  /* Metallic gradients */
+  --metallic-gradient: var(--metallic-gradient-light);
+  --metallic-shadow: var(--metallic-shadow-light);
+
+  /* Trend colors */
+  --trend-positive: var(--trend-positive-light);
+  --trend-negative: var(--trend-negative-light);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background-color: var(--bg);
+  transition: background-color 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#root {
+  min-height: 100vh;
+}
+
+/* Typography - Refined Hierarchy */
+.font-display {
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.font-body {
+  font-family: var(--font-body);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  line-height: 1.6;
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+  font-weight: 400;
+  letter-spacing: 0;
+  font-feature-settings: 'zero' 1, 'ss01' 1;
+}
+
+/* Elegant Transitions */
+.theme-transition {
+  transition:
+    background-color 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+    color 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Metallic Text - Theme-Aware */
+.metallic-text {
+  background: var(--metallic-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: var(--metallic-shadow);
+  transition: filter 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Minimalist Button - Subtle Luxury */
+.minimal-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.875rem 2rem;
+  background-color: var(--accent);
+  color: var(--bg);
+  border: 1px solid var(--accent);
+  border-radius: 0;
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.minimal-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.minimal-button:active {
+  transform: translateY(0);
+}
+
+/* Minimalist Input */
+.minimal-input {
+  width: 100%;
+  padding: 0.875rem 1rem;
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 0;
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  color: var(--text);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.minimal-input:focus {
+  outline: none;
+  border-color: var(--text);
+  background-color: var(--bg);
+}
+
+.minimal-input::placeholder {
+  color: var(--text-muted);
+}
+
+/* Select specific styles */
+select.minimal-input {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23666666' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  padding-right: 2.5rem;
+}
+
+select.minimal-input option {
+  background-color: var(--surface);
+  color: var(--text);
+}
+
+/* Textarea specific */
+textarea.minimal-input {
+  font-family: var(--font-body);
+  line-height: 1.6;
+}
+
+/* Minimalist Card - Clean Elevation */
+.minimal-card {
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 0;
+  padding: 2rem;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.minimal-card:hover {
+  border-color: var(--text);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  transform: translateY(-2px);
+}
+
+/* Divider - Refined Separation */
+.minimal-divider {
+  height: 1px;
+  background-color: var(--border);
+  border: none;
+  margin: 3rem 0;
+}
+
+/* Badge - Understated Label */
+.minimal-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.75rem;
+  background-color: transparent;
+  border: 1px solid var(--border);
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  color: var(--text-secondary);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* Refined Spacing System */
+.space-y-minimal > * + * {
+  margin-top: 1rem;
+}
+
+.space-y-comfortable > * + * {
+  margin-top: 2rem;
+}
+
+.space-y-generous > * + * {
+  margin-top: 4rem;
+}
+
+/* Extended Spacing System - 4px Base Unit */
+
+/* Gap Utilities - For flex/grid layouts */
+.gap-minimal {
+  gap: 0.5rem; /* 8px - Very tight spacing */
+}
+
+.gap-compact {
+  gap: 0.75rem; /* 12px - Compact spacing */
+}
+
+.gap-comfortable {
+  gap: 1rem; /* 16px - Standard spacing */
+}
+
+.gap-spacious {
+  gap: 1.5rem; /* 24px - Generous spacing */
+}
+
+.gap-luxury {
+  gap: 2rem; /* 32px - Maximum spacing */
+}
+
+/* Padding Utilities - For cards/containers */
+.p-comfortable {
+  padding: 1.5rem; /* 24px - DEFAULT for cards */
+}
+
+.p-spacious {
+  padding: 2rem; /* 32px */
+}
+
+/* Luxury of Space - Generous Padding */
+.container-luxury {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+}
+
+/* Refined Hover States */
+.hover-lift {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hover-lift:hover {
+  transform: translateY(-2px);
+}
+
+/* Sophisticated Focus States */
+.focus-minimal:focus {
+  outline: 2px solid var(--text);
+  outline-offset: 4px;
+}
+
+.focus-minimal:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Elegant Animations */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes slide-in {
+  from {
+    opacity: 0;
+    transform: translateX(-16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-slide-in {
+  animation: slide-in 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Subtle Backdrop Blur */
+.backdrop-blur-subtle {
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* Typography Scale - Refined Proportions */
+.text-display-large {
+  font-size: clamp(3rem, 8vw, 6rem);
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.text-display {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.text-heading-large {
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.text-heading {
+  font-size: clamp(1.25rem, 2vw, 1.75rem);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+
+.text-body-large {
+  font-size: 1.125rem;
+  line-height: 1.6;
+}
+
+.text-body {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.text-caption {
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
+
+.text-small {
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: var(--text-muted);
+}
+
+/* Responsive Refinements */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@media (pointer: coarse) {
+  button,
+  a,
+  [role="button"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+@media (max-width: 640px) {
+  :root {
+    font-size: 15px;
+  }
+
+  .container-luxury {
+    padding: 2rem 1.5rem;
+  }
+}
+
+/* Safe Area Insets */
+@supports (padding: max(0px)) {
+  body {
+    padding-left: max(0px, env(safe-area-inset-left));
+    padding-right: max(0px, env(safe-area-inset-right));
+    padding-bottom: max(0px, env(safe-area-inset-bottom));
+  }
+}
