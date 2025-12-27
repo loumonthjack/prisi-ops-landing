@@ -30,7 +30,7 @@ export function ToolsSection({ tools }: ToolsSectionProps) {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="font-display text-heading-large metallic-text tracking-wide mb-4"
         >
-          Tech Stack
+          Technology
         </motion.h2>
 
         {/* Subtitle */}
@@ -43,7 +43,19 @@ export function ToolsSection({ tools }: ToolsSectionProps) {
         >
           The tools we use to build intelligent automation
         </motion.p>
-        <br/>
+        {/* Subtle divider */}
+        <motion.div
+          initial={{ scaleX: 0, opacity: 0 }}
+          animate={{ scaleX: 1, opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.8 }}
+          style={{
+            width: '100px',
+            height: '2px',
+            margin: '1.0rem auto 2.0rem',
+            transformOrigin: 'center',
+            background: 'linear-gradient(90deg, transparent, var(--text-muted), transparent)',
+          }}
+        />
 
         {/* Tools Grid */}
         <motion.div
@@ -68,19 +80,7 @@ export function ToolsSection({ tools }: ToolsSectionProps) {
           ))}
         </motion.div>
 
-        {/* Subtle divider */}
-        <motion.div
-          initial={{ scaleX: 0, opacity: 0 }}
-          animate={{ scaleX: 1, opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.8 }}
-          style={{
-            width: '100px',
-            height: '2px',
-            margin: '2.5rem auto 0',
-            transformOrigin: 'center',
-            background: 'linear-gradient(90deg, transparent, var(--text-muted), transparent)',
-          }}
-        />
+        
       </motion.div>
     </section>
   );

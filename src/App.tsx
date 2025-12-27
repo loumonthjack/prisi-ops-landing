@@ -1,6 +1,7 @@
+import { useMemo } from 'react';
 import { AnimatePresence } from 'framer-motion';
 import { Routes, Route } from 'react-router-dom';
-import { VaultProvider, useVault } from './context/VaultContext';
+import { VaultProvider, useVault, hasVisitedBefore } from './context/VaultContext';
 import { ThemeProvider } from './context/ThemeContext';
 import { ThemeToggle } from './components/ThemeToggle';
 import { VaultDoor } from './components/VaultDoor';
@@ -16,6 +17,11 @@ import './App.css';
  */
 function VaultExperience() {
   const { state, dispatch } = useVault();
+
+  // Check if user has visited before
+  const isReturningVisitor = useMemo(() => {
+    return hasVisitedBefore();
+  }, []);
 
   const handleUnlock = () => {
     dispatch({ type: 'UNLOCK' });
@@ -42,6 +48,7 @@ function VaultExperience() {
             onUnlock={handleUnlock}
             onEnter={handleEnter}
             isUnlocked={state.isUnlocked}
+            isReturningVisitor={isReturningVisitor}
           />
         ) : (
           <VaultInterior

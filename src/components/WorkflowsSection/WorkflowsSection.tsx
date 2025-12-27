@@ -59,7 +59,19 @@ export function WorkflowsSection({ workflows }: WorkflowsSectionProps) {
         >
           AI agent workflows designed for efficiency and clarity
         </motion.p>
-        <br/>
+        {/* Subtle divider */}
+        <motion.div
+          initial={{ scaleX: 0, opacity: 0 }}
+          animate={{ scaleX: 1, opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.8 }}
+          style={{
+            width: '100px',
+            height: '2px',
+            margin: '1.0rem auto 2.0rem',
+            transformOrigin: 'center',
+            background: 'linear-gradient(90deg, transparent, var(--text-muted), transparent)',
+          }}
+        />
 
       {/* Workflows */}
       <div className="space-y-generous">

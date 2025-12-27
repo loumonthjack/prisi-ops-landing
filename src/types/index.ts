@@ -10,7 +10,9 @@ export type NavigationAction =
   | { type: 'UNLOCK' }
   | { type: 'ENTER' }
   | { type: 'NAVIGATE'; payload: number }
-  | { type: 'UNLOCK_SECTION'; payload: number };
+  | { type: 'UNLOCK_SECTION'; payload: number }
+  | { type: 'RESET_VAULT' }
+  | { type: 'HYDRATE_STATE'; payload: Partial<VaultState> };
 
 // Component Props Types
 export interface ProfileLockProps {
@@ -23,6 +25,7 @@ export interface ProfileLockProps {
 export interface VaultDoorProps {
   isUnlocking: boolean;
   onUnlock: () => void;
+  isReturningVisitor?: boolean;
 }
 
 export interface VaultInteriorProps {

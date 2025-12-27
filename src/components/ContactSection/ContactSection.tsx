@@ -48,6 +48,7 @@ export function ContactSection({ contact }: ContactSectionProps) {
         subject: SUBJECT_OPTIONS[0],
         message: '',
       });
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
       setSubmitStatus('error');
     } finally {
@@ -109,9 +110,8 @@ export function ContactSection({ contact }: ContactSectionProps) {
   return (
     <section
       data-testid="contact-section"
-      className="w-full h-full flex flex-col items-center justify-start px-6 md:px-12 py-8 overflow-y-auto"
+      className="w-full h-full flex items-center justify-center px-6 md:px-12"
     >
-      <br/>
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
@@ -123,7 +123,7 @@ export function ContactSection({ contact }: ContactSectionProps) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="font-display text-heading-large metallic-text tracking-wide mb-8"
+          className="font-display text-heading-large metallic-text tracking-wide mb-4"
         >
           Connect
         </motion.h2>
@@ -133,12 +133,25 @@ export function ContactSection({ contact }: ContactSectionProps) {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="font-body text-base md:text-lg mb-12"
+          className="font-body text-body-large mb-10"
           style={{ color: 'var(--text-secondary)' }}
         >
           Ready to transform your operations?
         </motion.p>
-        <br/>
+        {/* Subtle divider */}
+        <motion.div
+          initial={{ scaleX: 0, opacity: 0 }}
+          animate={{ scaleX: 1, opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.8 }}
+          style={{
+            width: '100px',
+            height: '2px',
+            margin: '1.0rem auto 2.0rem',
+            transformOrigin: 'center',
+            background: 'linear-gradient(90deg, transparent, var(--text-muted), transparent)',
+          }}
+        />
+          
         {/* Two Column Layout: Form + Contact Links */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-10">
           {/* Contact Form */}
@@ -327,19 +340,7 @@ export function ContactSection({ contact }: ContactSectionProps) {
           </motion.div>
         </div>
 
-        {/* Subtle divider */}
-        <motion.div
-          initial={{ scaleX: 0, opacity: 0 }}
-          animate={{ scaleX: 1, opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.8 }}
-          style={{
-            width: '100px',
-            height: '2px',
-            margin: '2.5rem auto 0',
-            transformOrigin: 'center',
-            background: 'linear-gradient(90deg, transparent, var(--text-muted), transparent)',
-          }}
-        />
+        
       </motion.div>
     </section>
   );

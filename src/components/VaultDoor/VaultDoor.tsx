@@ -13,12 +13,14 @@ interface VaultDoorProps {
   onUnlock: () => void;
   onEnter: () => void;
   isUnlocked: boolean;
+  isReturningVisitor?: boolean;
 }
 
-export function VaultDoor({ onUnlock, onEnter, isUnlocked }: VaultDoorProps) {
+export function VaultDoor({ onUnlock, onEnter, isUnlocked, isReturningVisitor = false }: VaultDoorProps) {
   const [isOpening, setIsOpening] = useState(false);
   const [doorFullyOpen, setDoorFullyOpen] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
+  const [isSkippable, setIsSkippable] = useState(false);
   const prefersReducedMotion = useReducedMotion();
   const [isMobile, setIsMobile] = useState(false);
 
@@ -48,12 +50,38 @@ export function VaultDoor({ onUnlock, onEnter, isUnlocked }: VaultDoorProps) {
 
   const handleEntryAnimationComplete = () => {
     if (doorFullyOpen) {
-      // Show welcome screen for a moment before entering
+      // Different durations for new vs returning visitors
+      const welcomeDuration = isReturningVisitor ? 500 : 1000;
+
+      // Make skippable after 500ms
+      setTimeout(() => {
+        setIsSkippable(true);
+      }, 500);
+
+      // Auto-enter after duration
       setTimeout(() => {
         onEnter();
-      }, 2500);
+      }, welcomeDuration);
     }
   };
+
+  const handleSkip = () => {
+    if (isSkippable) {
+      onEnter();
+    }
+  };
+
+  // Keyboard skip functionality
+  useEffect(() => {
+    if (!doorFullyOpen || !isSkippable) return;
+
+    const handleKeyPress = () => {
+      handleSkip();
+    };
+
+    window.addEventListener('keydown', handleKeyPress);
+    return () => window.removeEventListener('keydown', handleKeyPress);
+  }, [doorFullyOpen, isSkippable]);
 
   const doorAnimationDuration = isMobile ? 0.8 : 1.2;
   const entryAnimationDuration = isMobile ? 0.8 : 1.2;
@@ -88,7 +116,7 @@ export function VaultDoor({ onUnlock, onEnter, isUnlocked }: VaultDoorProps) {
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="mb-12 font-display metallic-text tracking-wider"
+              className="mb-4 md:mb-6 font-display metallic-text tracking-wider"
               style={{
                 fontSize: isMobile ? '3rem' : '5rem',
                 letterSpacing: '0.15em',
@@ -97,19 +125,36 @@ export function VaultDoor({ onUnlock, onEnter, isUnlocked }: VaultDoorProps) {
               PRISI OPS
             </motion.h1>
 
-            {/* Click to Enter */}
+            {/* Tagline */}
             <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="text-sm tracking-widest uppercase"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="mb-8 md:mb-12 text-xs md:text-base tracking-wide text-center px-4"
               style={{
-                color: isHovered ? 'var(--text-secondary)' : 'var(--text-muted)',
-                transition: 'color 0.3s ease',
+                color: 'var(--text-secondary)',
               }}
             >
-              click to enter
+              AI-Powered Operations That Work While You Sleep
             </motion.p>
+
+            {/* Enhanced Click to Enter CTA */}
+            <motion.button
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.7 }}
+              onClick={handleClick}
+              className="px-6 py-3 text-sm tracking-widest uppercase border transition-all theme-transition mt-4"
+              style={{
+                borderColor: isHovered ? 'var(--text-secondary)' : 'var(--border)',
+                color: isHovered ? 'var(--text)' : 'var(--text-muted)',
+                backgroundColor: isHovered ? 'rgba(255,255,255,0.03)' : 'transparent',
+              }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              Enter Experience →
+            </motion.button>
 
             {/* Subtle pulse animation on hover */}
             <motion.div
@@ -137,7 +182,7 @@ export function VaultDoor({ onUnlock, onEnter, isUnlocked }: VaultDoorProps) {
           <motion.div
             key="entry-transition"
             data-testid="vault-entry"
-            className="absolute inset-0 flex flex-col items-center justify-center"
+            className="absolute inset-0 flex flex-col items-center justify-center cursor-pointer"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -146,6 +191,7 @@ export function VaultDoor({ onUnlock, onEnter, isUnlocked }: VaultDoorProps) {
               ease: [0.4, 0, 0.2, 1]
             }}
             onAnimationComplete={handleEntryAnimationComplete}
+            onClick={handleSkip}
           >
             {/* Large Welcome Text */}
             <motion.h1
@@ -161,7 +207,7 @@ export function VaultDoor({ onUnlock, onEnter, isUnlocked }: VaultDoorProps) {
                 letterSpacing: '0.05em',
               }}
             >
-              Welcome
+              {isReturningVisitor ? 'Welcome Back' : 'Welcome'}
             </motion.h1>
 
             {/* Warm subtext */}
@@ -197,6 +243,36 @@ export function VaultDoor({ onUnlock, onEnter, isUnlocked }: VaultDoorProps) {
                 width: isMobile ? '80px' : '120px',
                 height: '2px',
                 background: 'linear-gradient(90deg, transparent, var(--text-muted), transparent)',
+              }}
+            />
+
+            {/* Skip hint - shows after 500ms */}
+            {isSkippable && (
+              <motion.p
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.5 }}
+                className="skip-hint absolute bottom-12 text-center font-mono"
+                style={{
+                  fontSize: '0.75rem',
+                  color: 'var(--text-muted)',
+                }}
+              >
+                Press any key or click to continue
+              </motion.p>
+            )}
+
+            {/* Progress indicator */}
+            <motion.div
+              className="absolute bottom-0 left-0 h-0.5"
+              style={{
+                backgroundColor: 'var(--accent)',
+              }}
+              initial={{ width: '0%' }}
+              animate={{ width: '100%' }}
+              transition={{
+                duration: isReturningVisitor ? 0.5 : 1,
+                ease: 'linear',
               }}
             />
           </motion.div>

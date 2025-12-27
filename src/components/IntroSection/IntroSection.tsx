@@ -49,7 +49,19 @@ export function IntroSection() {
             automate complex workflows, streamline decision-making, and unlock unprecedented
             levels of efficiency.
           </p>
-          <br/>
+          {/* Subtle divider */}
+        <motion.div
+          initial={{ scaleX: 0, opacity: 0 }}
+          animate={{ scaleX: 1, opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.8 }}
+          style={{
+            width: '100px',
+            height: '2px',
+            margin: '1.0rem auto 1.0rem',
+            transformOrigin: 'center',
+            background: 'linear-gradient(90deg, transparent, var(--text-muted), transparent)',
+          }}
+        />
 
           {/* Expanded Description */}
           <p
@@ -76,21 +88,6 @@ export function IntroSection() {
             matters—building, creating, and growing your vision.
           </motion.p>
         </motion.div>
-
-        {/* Subtle divider */}
-        <motion.div
-          initial={{ scaleX: 0, opacity: 0 }}
-          animate={{ scaleX: 1, opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.8 }}
-          className="mt-10"
-          style={{
-            width: '100px',
-            height: '2px',
-            margin: '2.5rem auto 0',
-            transformOrigin: 'center',
-            background: 'linear-gradient(90deg, transparent, var(--text-muted), transparent)',
-          }}
-        />
       </motion.div>
     </section>
   );

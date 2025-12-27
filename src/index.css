@@ -453,3 +453,65 @@ textarea.minimal-input {
     padding-bottom: max(0px, env(safe-area-inset-bottom));
   }
 }
+
+/* Floating CTA Styles */
+.floating-cta {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 50;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.floating-cta-collapsed {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+}
+
+.floating-cta-expanded {
+  border-radius: 28px;
+  padding: 0.75rem 1.5rem;
+}
+
+.floating-cta-pulse {
+  animation: pulse-subtle 2s infinite;
+}
+
+@keyframes pulse-subtle {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+/* Mobile Progress Segment */
+.mobile-progress-segment {
+  height: 3px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+
+.mobile-progress-segment.active {
+  background-color: var(--accent);
+}
+
+.mobile-progress-segment.inactive {
+  background-color: var(--border);
+}
+
+/* Skip Hint Animation */
+.skip-hint {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  opacity: 0;
+  animation: fade-in-delayed 0.5s 0.5s forwards;
+}
+
+@keyframes fade-in-delayed {
+  to {
+    opacity: 1;
+  }
+}

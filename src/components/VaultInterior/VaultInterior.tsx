@@ -6,6 +6,7 @@ import { CaseStudiesSection } from '../CaseStudiesSection';
 import { WorkflowsSection } from '../WorkflowsSection';
 import { ToolsSection } from '../ToolsSection';
 import { ContactSection } from '../ContactSection';
+import { FloatingCTA } from '../FloatingCTA';
 import { expertise, contact, caseStudies, workflows } from '../../data';
 import type { VaultInteriorProps } from '../../types';
 
@@ -63,6 +64,11 @@ export function VaultInterior({ currentSection, onNavigate }: VaultInteriorProps
   const canGoPrevious = clampedSection > 0;
   const canGoNext = clampedSection < totalSections - 1;
 
+  // Hide FloatingCTA on Connect section (index 5) to avoid redundancy
+  const shouldShowCTA = useMemo(() => {
+    return clampedSection !== 5;
+  }, [clampedSection]);
+
   return (
     <motion.div
       className="fixed inset-0 overflow-hidden theme-transition"
@@ -72,8 +78,8 @@ export function VaultInterior({ currentSection, onNavigate }: VaultInteriorProps
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
     >
-      {/* Navigation Dots - Top Center (Hidden on Mobile) */}
-      <nav className="hidden md:absolute md:top-8 md:left-1/2 md:-translate-x-1/2 md:z-20 md:px-4" aria-label="Portfolio navigation">
+      {/* Navigation Dots - Top Center (Desktop Only) */}
+      <nav className="hidden md:absolute md:flex md:top-8 md:left-1/2 md:-translate-x-1/2 md:z-20 md:px-4" aria-label="Portfolio navigation">
         <div className="flex items-center gap-compact md:gap-comfortable">
           {SECTIONS.map((section, index) => (
             <button
@@ -178,6 +184,11 @@ export function VaultInterior({ currentSection, onNavigate }: VaultInteriorProps
           </svg>
         </button>
       </div>
+
+      {/* Floating CTA Button - Hidden on Contact section */}
+      {contact.calendly && (
+        <FloatingCTA calendlyUrl={contact.calendly} isVisible={shouldShowCTA} />
+      )}
     </motion.div>
   );
 }
