@@ -72,8 +72,8 @@ export function VaultInterior({ currentSection, onNavigate }: VaultInteriorProps
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
     >
-      {/* Navigation Dots - Top Center */}
-      <nav className="absolute top-8 left-1/2 -translate-x-1/2 z-20 px-4" aria-label="Portfolio navigation">
+      {/* Navigation Dots - Top Center (Hidden on Mobile) */}
+      <nav className="hidden md:absolute md:top-8 md:left-1/2 md:-translate-x-1/2 md:z-20 md:px-4" aria-label="Portfolio navigation">
         <div className="flex items-center gap-compact md:gap-comfortable">
           {SECTIONS.map((section, index) => (
             <button
@@ -110,7 +110,7 @@ export function VaultInterior({ currentSection, onNavigate }: VaultInteriorProps
       </nav>
 
       {/* Main Content - Minimal Scroll */}
-      <main className="h-full overflow-y-auto pt-32 pb-24">
+      <main className="h-full overflow-y-auto pt-16 md:pt-32 pb-24">
         <div className="container-luxury">
           <AnimatePresence mode="wait">
             <motion.div
