@@ -7,7 +7,7 @@ import { motion } from 'framer-motion';
  * Designed to fit within viewport with clean layout.
  */
 
-export interface ServicesSectionProps{
+export interface ServicesSectionProps {
   expertise: {
     tools: string[];
     services: string[];
@@ -20,6 +20,7 @@ export function ServicesSection({ expertise }: ServicesSectionProps) {
       data-testid="services-section"
       className="w-full h-full flex items-center justify-center px-6 md:px-12"
     >
+      <br/>
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
@@ -31,7 +32,7 @@ export function ServicesSection({ expertise }: ServicesSectionProps) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="font-display text-heading-large metallic-text tracking-wide mb-4"
+          className="font-display text-heading-large metallic-text tracking-wide mb-8"
         >
           Solutions
         </motion.h2>
@@ -41,18 +42,19 @@ export function ServicesSection({ expertise }: ServicesSectionProps) {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="font-body text-base md:text-lg mb-10 max-w-2xl mx-auto"
+          className="font-body text-base md:text-lg mb-14 max-w-2xl mx-auto"
           style={{ color: 'var(--text-secondary)' }}
         >
           Transform your operations with AI
         </motion.p>
+        <br/>
 
         {/* Services Grid */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-5"
+          className="grid grid-cols-1 md:grid-cols-2 gap-8"
           data-testid="services-grid"
         >
           {expertise.services.map((service, index) => (

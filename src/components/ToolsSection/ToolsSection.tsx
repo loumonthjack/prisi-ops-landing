@@ -43,6 +43,7 @@ export function ToolsSection({ tools }: ToolsSectionProps) {
         >
           The tools we use to build intelligent automation
         </motion.p>
+        <br/>
 
         {/* Tools Grid */}
         <motion.div

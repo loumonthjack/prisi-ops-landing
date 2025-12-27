@@ -14,6 +14,7 @@ export function IntroSection() {
       data-testid="intro-section"
       className="w-full h-full flex items-center justify-center px-6 md:px-12"
     >
+      <br/>
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
@@ -25,7 +26,7 @@ export function IntroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="font-display text-heading-large metallic-text tracking-wide mb-8"
+          className="font-display text-heading-large metallic-text tracking-wide mb-12"
         >
           Vision
         </motion.h2>
@@ -35,7 +36,7 @@ export function IntroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="space-y-5"
+          className="space-y-8"
         >
           {/* Main Bio */}
           <p
@@ -48,6 +49,7 @@ export function IntroSection() {
             automate complex workflows, streamline decision-making, and unlock unprecedented
             levels of efficiency.
           </p>
+          <br/>
 
           {/* Expanded Description */}
           <p

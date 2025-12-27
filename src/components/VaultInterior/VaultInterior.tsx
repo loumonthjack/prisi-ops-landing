@@ -110,7 +110,7 @@ export function VaultInterior({ currentSection, onNavigate }: VaultInteriorProps
       </nav>
 
       {/* Main Content - Minimal Scroll */}
-      <main className="h-full overflow-y-auto pt-16 md:pt-32 pb-24">
+      <main className="h-full overflow-y-auto pt-24 md:pt-40 pb-28">
         <div className="container-luxury">
           <AnimatePresence mode="wait">
             <motion.div

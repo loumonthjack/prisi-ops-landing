@@ -142,7 +142,7 @@ export function AboutSection({ profile, expertise }: AboutSectionProps) {
         </h3>
 
         <div
-          className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto"
+          className="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-3xl mx-auto"
           data-testid="expertise-services"
         >
           {expertise.services.map((service, index) => (

@@ -111,6 +111,7 @@ export function ContactSection({ contact }: ContactSectionProps) {
       data-testid="contact-section"
       className="w-full h-full flex flex-col items-center justify-start px-6 md:px-12 py-8 overflow-y-auto"
     >
+      <br/>
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
@@ -122,7 +123,7 @@ export function ContactSection({ contact }: ContactSectionProps) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="font-display text-heading-large metallic-text tracking-wide mb-4"
+          className="font-display text-heading-large metallic-text tracking-wide mb-8"
         >
           Connect
         </motion.h2>
@@ -132,14 +133,14 @@ export function ContactSection({ contact }: ContactSectionProps) {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="font-body text-base md:text-lg mb-8"
+          className="font-body text-base md:text-lg mb-12"
           style={{ color: 'var(--text-secondary)' }}
         >
           Ready to transform your operations?
         </motion.p>
-
+        <br/>
         {/* Two Column Layout: Form + Contact Links */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-10">
           {/* Contact Form */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
@@ -151,7 +152,7 @@ export function ContactSection({ contact }: ContactSectionProps) {
               Send us a message
             </h3>
 
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <form onSubmit={handleSubmit} className="space-y-6">
               {/* Name Input */}
               <div>
                 <label htmlFor="name" className="block font-mono text-xs mb-2" style={{ color: 'var(--text-muted)' }}>
@@ -258,7 +259,7 @@ export function ContactSection({ contact }: ContactSectionProps) {
             </form>
           </motion.div>
 
-            <motion.div
+          <motion.div
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.5 }}
@@ -268,60 +269,60 @@ export function ContactSection({ contact }: ContactSectionProps) {
               Other ways to connect
             </h3>
 
-            <div className="space-y-4" data-testid="contact-links">
-          {contactLinks.map((link, index) => (
-            <motion.a
-              key={link.key}
-              href={link.href}
-              target={link.key !== 'email' ? '_blank' : undefined}
-              rel={link.key !== 'email' ? 'noopener noreferrer' : undefined}
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.5 + index * 0.1 }}
-              data-testid={`contact-link-${link.key}`}
-              className="flex items-center gap-4 p-4 transition-all duration-300 hover:scale-[1.02] group"
-              style={{
-                backgroundColor: 'var(--surface)',
-                border: '1px solid var(--border)',
-              }}
-            >
-              {/* Icon */}
-              <div
-                className="flex-shrink-0 w-10 h-10 flex items-center justify-center"
-                style={{
-                  color: 'var(--text-secondary)',
-                }}
-              >
-                {link.icon}
-              </div>
-
-              {/* Link content */}
-              <div className="flex-1">
-                <span
-                  className="block font-mono text-xs mb-1"
-                  style={{ color: 'var(--text-muted)' }}
+            <div className="space-y-6" data-testid="contact-links">
+              {contactLinks.map((link, index) => (
+                <motion.a
+                  key={link.key}
+                  href={link.href}
+                  target={link.key !== 'email' ? '_blank' : undefined}
+                  rel={link.key !== 'email' ? 'noopener noreferrer' : undefined}
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.5 + index * 0.1 }}
+                  data-testid={`contact-link-${link.key}`}
+                  className="flex items-center gap-4 p-4 transition-all duration-300 hover:scale-[1.02] group"
+                  style={{
+                    backgroundColor: 'var(--surface)',
+                    border: '1px solid var(--border)',
+                  }}
                 >
-                  {link.label}
-                </span>
-                <span
-                  className="font-body block text-sm md:text-base font-medium"
-                  style={{ color: 'var(--text)' }}
-                >
-                  {link.value}
-                </span>
-              </div>
+                  {/* Icon */}
+                  <div
+                    className="flex-shrink-0 w-10 h-10 flex items-center justify-center"
+                    style={{
+                      color: 'var(--text-secondary)',
+                    }}
+                  >
+                    {link.icon}
+                  </div>
 
-              {/* Arrow indicator */}
-              <div
-                className="flex-shrink-0 transition-transform duration-300 group-hover:translate-x-1"
-                style={{ color: 'var(--text-muted)' }}
-              >
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 5l7 7-7 7" />
-                </svg>
-              </div>
-            </motion.a>
-          ))}
+                  {/* Link content */}
+                  <div className="flex-1">
+                    <span
+                      className="block font-mono text-xs mb-1"
+                      style={{ color: 'var(--text-muted)' }}
+                    >
+                      {link.label}
+                    </span>
+                    <span
+                      className="font-body block text-sm md:text-base font-medium"
+                      style={{ color: 'var(--text)' }}
+                    >
+                      {link.value}
+                    </span>
+                  </div>
+
+                  {/* Arrow indicator */}
+                  <div
+                    className="flex-shrink-0 transition-transform duration-300 group-hover:translate-x-1"
+                    style={{ color: 'var(--text-muted)' }}
+                  >
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </div>
+                </motion.a>
+              ))}
             </div>
           </motion.div>
         </div>

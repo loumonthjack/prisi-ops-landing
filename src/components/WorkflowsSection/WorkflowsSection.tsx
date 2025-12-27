@@ -28,24 +28,41 @@ export function WorkflowsSection({ workflows }: WorkflowsSectionProps) {
   };
 
   return (
-    <section data-testid="workflows-section" className="w-full space-y-comfortable">
-      {/* Introduction */}
+    <section
+      data-testid="services-section"
+      className="w-full h-full flex items-center justify-center px-6 md:px-12"
+    >
+      <br/>
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        className="text-center max-w-2xl mx-auto"
+        transition={{ duration: 0.8, ease: [0.215, 0.61, 0.355, 1] }}
+        className="w-full max-w-4xl text-center"
       >
-        <p
-          className="font-body text-body-large"
+        {/* Section Title */}
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="font-display text-heading-large metallic-text tracking-wide mb-8"
+        >
+        Workflows
+        </motion.h2>
+
+        {/* Subtitle */}
+        <motion.p
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="font-body text-base md:text-lg mb-14 max-w-2xl mx-auto"
           style={{ color: 'var(--text-secondary)' }}
         >
           AI agent workflows designed for efficiency and clarity
-        </p>
-      </motion.div>
+        </motion.p>
+        <br/>
 
       {/* Workflows */}
-      <div className="space-y-comfortable">
+      <div className="space-y-generous">
         {workflows.map((workflow, index) => (
           <motion.div
             key={workflow.id}
@@ -94,6 +111,7 @@ export function WorkflowsSection({ workflows }: WorkflowsSectionProps) {
           </motion.div>
         ))}
       </div>
+      </motion.div>
     </section>
   );
 }

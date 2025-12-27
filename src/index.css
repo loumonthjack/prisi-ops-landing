@@ -41,7 +41,7 @@
 /* Base Styles - Refined Minimalism */
 :root {
   font-family: var(--font-body);
-  line-height: 1.6;
+  line-height: 1.75;
   font-weight: 400;
   font-size: 16px;
 
@@ -69,7 +69,7 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  letter-spacing: -0.01em;
+  letter-spacing: 0.005em;
 }
 
 /* Light Theme */
@@ -121,7 +121,7 @@ body {
   font-family: var(--font-body);
   font-weight: 400;
   letter-spacing: -0.01em;
-  line-height: 1.6;
+  line-height: 1.75;
 }
 
 .font-mono {
@@ -262,11 +262,11 @@ textarea.minimal-input {
 
 /* Refined Spacing System */
 .space-y-minimal > * + * {
-  margin-top: 1rem;
+  margin-top: 1.5rem;
 }
 
 .space-y-comfortable > * + * {
-  margin-top: 2rem;
+  margin-top: 2.5rem;
 }
 
 .space-y-generous > * + * {
@@ -277,19 +277,19 @@ textarea.minimal-input {
 
 /* Gap Utilities - For flex/grid layouts */
 .gap-minimal {
-  gap: 0.5rem; /* 8px - Very tight spacing */
+  gap: 0.75rem; /* 12px - Increased from 8px */
 }
 
 .gap-compact {
-  gap: 0.75rem; /* 12px - Compact spacing */
+  gap: 1rem; /* 16px - Increased from 12px */
 }
 
 .gap-comfortable {
-  gap: 1rem; /* 16px - Standard spacing */
+  gap: 1.5rem; /* 24px - Increased from 16px */
 }
 
 .gap-spacious {
-  gap: 1.5rem; /* 24px - Generous spacing */
+  gap: 2rem; /* 32px - Increased from 24px */
 }
 
 .gap-luxury {
@@ -298,7 +298,7 @@ textarea.minimal-input {
 
 /* Padding Utilities - For cards/containers */
 .p-comfortable {
-  padding: 1.5rem; /* 24px - DEFAULT for cards */
+  padding: 2rem; /* 32px - Increased from 24px */
 }
 
 .p-spacious {

@@ -23,36 +23,44 @@ export function CaseStudiesSection({ caseStudies }: CaseStudiesSectionProps) {
 
   return (
     <section
-      data-testid="case-studies-section"
-      className="w-full h-full flex flex-col items-center justify-start px-6 md:px-12 py-8"
+      data-testid="services-section"
+      className="w-full h-full flex items-center justify-center px-6 md:px-12"
     >
-      {/* Section Title */}
-      <motion.h2
-        initial={{ opacity: 0, y: 20 }}
+      <br/>
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.2 }}
-        className="font-display text-heading-large metallic-text tracking-wide mb-4 text-center"
+        transition={{ duration: 0.8, ease: [0.215, 0.61, 0.355, 1] }}
+        className="w-full max-w-4xl text-center"
       >
-        Impact
-      </motion.h2>
+        {/* Section Title */}
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="font-display text-heading-large metallic-text tracking-wide mb-8"
+        >
+          Impact
+        </motion.h2>
 
-      {/* Subtitle */}
-      <motion.p
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.3 }}
-        className="font-body text-base md:text-lg mb-8 max-w-2xl mx-auto text-center"
-        style={{ color: 'var(--text-secondary)' }}
-      >
+        {/* Subtitle */}
+        <motion.p
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="font-body text-base md:text-lg mb-14 max-w-2xl mx-auto"
+          style={{ color: 'var(--text-secondary)' }}
+        >
         Real results for real businesses
       </motion.p>
+      <br/>
 
       {/* Case Studies List */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.4 }}
-        className="w-full max-w-3xl space-y-4"
+        className="w-full max-w-3xl space-y-6"
       >
         {caseStudies.map((caseStudy, index) => (
           <motion.div
@@ -83,6 +91,7 @@ export function CaseStudiesSection({ caseStudies }: CaseStudiesSectionProps) {
           background: 'linear-gradient(90deg, transparent, var(--text-muted), transparent)',
         }}
       />
+      </motion.div>
     </section>
   );
 }
