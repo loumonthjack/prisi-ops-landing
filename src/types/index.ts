@@ -146,6 +146,11 @@ export interface ContactInfo {
   calendly?: string;
 }
 
+export interface Service {
+  name: string;
+  description: string;
+}
+
 export interface PortfolioContent {
   profile: {
     name: string;
@@ -156,7 +161,7 @@ export interface PortfolioContent {
   };
   expertise: {
     tools: string[];
-    services: string[];
+    services: Service[];
   };
   caseStudies: CaseStudy[];
   workflows: AgentWorkflow[];

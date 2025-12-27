@@ -7,10 +7,12 @@ import { motion } from 'framer-motion';
  * Designed to fit within viewport with clean layout.
  */
 
+import type { Service } from '../../types';
+
 export interface ServicesSectionProps {
   expertise: {
     tools: string[];
-    services: string[];
+    services: Service[];
   };
 }
 
@@ -72,7 +74,7 @@ export function ServicesSection({ expertise }: ServicesSectionProps) {
         >
           {expertise.services.map((service, index) => (
             <motion.div
-              key={service}
+              key={`service-${index}`}
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.4 + index * 0.08 }}
@@ -82,9 +84,9 @@ export function ServicesSection({ expertise }: ServicesSectionProps) {
                 border: '1px solid var(--border)',
               }}
             >
-              <div className="flex items-center gap-4">
+              <div className="flex items-start gap-4">
                 <span
-                  className="font-mono text-sm flex-shrink-0 w-10 h-10 rounded-lg flex items-center justify-center"
+                  className="font-mono text-sm flex-shrink-0 w-10 h-10 rounded-lg flex items-center justify-center mt-1"
                   style={{
                     color: 'var(--text-secondary)',
                     backgroundColor: 'var(--bg)',
@@ -93,12 +95,20 @@ export function ServicesSection({ expertise }: ServicesSectionProps) {
                 >
                   {String(index + 1).padStart(2, '0')}
                 </span>
-                <p
-                  className="font-body text-base md:text-lg font-medium"
-                  style={{ color: 'var(--text)' }}
-                >
-                  {service}
-                </p>
+                <div className="flex-1">
+                  <h3
+                    className="font-body text-base md:text-lg font-semibold mb-2"
+                    style={{ color: 'var(--text)' }}
+                  >
+                    {service.name}
+                  </h3>
+                  <p
+                    className="font-body text-sm md:text-base leading-relaxed"
+                    style={{ color: 'var(--text-muted)' }}
+                  >
+                    {service.description}
+                  </p>
+                </div>
               </div>
             </motion.div>
           ))}

@@ -38,16 +38,15 @@ export function IntroSection() {
           transition={{ duration: 0.6, delay: 0.4 }}
           className="space-y-8"
         >
-          {/* Main Bio */}
+          {/* Pain Point Opening */}
           <p
             className="font-body text-base md:text-lg leading-relaxed"
             style={{ color: 'var(--text-secondary)' }}
             data-testid="bio-main"
           >
-            Prisi Ops is an AI-powered operations platform designed to transform how businesses
-            work. We combine cutting-edge artificial intelligence with intuitive design to
-            automate complex workflows, streamline decision-making, and unlock unprecedented
-            levels of efficiency.
+            If you&apos;re an operations manager at a growing DFW business, you know the challenge:
+            more work, same team size, limited budget. Your team is drowning in manual tasks—processing
+            documents, responding to customer inquiries, coordinating workflows—and it&apos;s holding your growth back.
           </p>
           {/* Subtle divider */}
         <motion.div
@@ -63,29 +62,30 @@ export function IntroSection() {
           }}
         />
 
-          {/* Expanded Description */}
+          {/* Value Proposition */}
           <p
             className="font-body text-sm md:text-base leading-relaxed"
             style={{ color: 'var(--text-muted)' }}
             data-testid="bio-expanded"
           >
-            From intelligent task automation to predictive analytics, our suite of AI agents
-            work tirelessly behind the scenes—handling everything from market research and
-            creative direction to advertising optimization and operational coordination.
-            Think of us as your always-on, never-sleeping operations team.
+            Prisi Ops builds AI automation systems that handle these repetitive operations tasks for you.
+            Think of it as hiring a team of tireless digital employees that work 24/7, don&apos;t make errors,
+            and cost a fraction of a human hire. We&apos;re based in Dallas-Fort Worth and understand the unique
+            challenges of Texas businesses—from rapid growth management to finding skilled talent in a competitive market.
           </p>
 
-          {/* Mission Statement */}
+          {/* What We Do - AI Explained */}
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.6 }}
-            className="font-body text-sm md:text-base leading-relaxed pt-2 italic"
+            className="font-body text-sm md:text-base leading-relaxed pt-2"
             style={{ color: 'var(--text-muted)' }}
             data-testid="bio-mission"
           >
-            Our mission is simple: give you back your time so you can focus on what truly
-            matters—building, creating, and growing your vision.
+            Our AI agents are specialized software systems that can read documents, make decisions based on
+            rules you set, communicate with customers, and coordinate complex workflows—all without human intervention.
+            Our clients typically see 40-80% cost reductions and payback periods of 6-8 months.
           </motion.p>
         </motion.div>
       </motion.div>
