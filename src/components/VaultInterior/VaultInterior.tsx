@@ -116,7 +116,7 @@ export function VaultInterior({ currentSection, onNavigate }: VaultInteriorProps
       </nav>
 
       {/* Main Content - Minimal Scroll */}
-      <main className="h-full overflow-y-auto pt-24 md:pt-40 pb-52 md:pb-28">
+      <main className="h-full overflow-y-auto pt-24 md:pt-40 pb-56 md:pb-32">
         <div className="container-luxury">
           <AnimatePresence mode="wait">
             <motion.div
@@ -148,41 +148,73 @@ export function VaultInterior({ currentSection, onNavigate }: VaultInteriorProps
               )}
             </motion.div>
           </AnimatePresence>
+
+
         </div>
       </main>
 
-      {/* Navigation Buttons - Bottom */}
-      <div className="absolute bottom-6 md:bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-6 md:gap-8 z-20">
-        <button
-          onClick={handlePrevious}
-          disabled={!canGoPrevious}
-          className="minimal-button disabled:opacity-30 disabled:cursor-not-allowed"
-          aria-label="Previous section"
-        >
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M10 12L6 8L10 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="square" />
-          </svg>
-          <span>Prev</span>
-        </button>
+      {/* Fixed Bottom Navigation & Footer */}
+      <div className="fixed bottom-0 left-0 right-0 z-20 pb-4 md:pb-6" style={{ backgroundColor: 'var(--bg)' }}>
+        {/* Navigation Buttons */}
+        <div className="flex items-center justify-center gap-6 md:gap-8 mb-3">
+          <button
+            onClick={handlePrevious}
+            disabled={!canGoPrevious}
+            className="minimal-button disabled:opacity-30 disabled:cursor-not-allowed"
+            aria-label="Previous section"
+          >
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M10 12L6 8L10 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="square" />
+            </svg>
+            <span>Prev</span>
+          </button>
 
-        <span
-          className="font-mono text-small"
-          style={{ color: 'var(--text-muted)' }}
-        >
-          {String(clampedSection + 1).padStart(2, '0')} / {String(totalSections).padStart(2, '0')}
-        </span>
+          <span
+            className="font-mono text-small"
+            style={{ color: 'var(--text-muted)' }}
+          >
+            {String(clampedSection + 1).padStart(2, '0')} / {String(totalSections).padStart(2, '0')}
+          </span>
 
-        <button
-          onClick={handleNext}
-          disabled={!canGoNext}
-          className="minimal-button disabled:opacity-30 disabled:cursor-not-allowed"
-          aria-label="Next section"
-        >
-          <span>Next</span>
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M6 4L10 8L6 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="square" />
-          </svg>
-        </button>
+          <button
+            onClick={handleNext}
+            disabled={!canGoNext}
+            className="minimal-button disabled:opacity-30 disabled:cursor-not-allowed"
+            aria-label="Next section"
+          >
+            <span>Next</span>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M6 4L10 8L6 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="square" />
+            </svg>
+          </button>
+        </div>
+        <br/>
+        {/* Footer Links */}
+        <nav className="flex flex-wrap justify-center gap-3 md:gap-6" aria-label="Legal">
+          <a
+            href="/terms"
+            className="font-mono hover:opacity-70 transition-opacity"
+            style={{ color: 'var(--text-muted)', fontSize: '0.6875rem' }}
+          >
+            Terms
+          </a>
+          <span style={{ color: 'var(--border)' }}>·</span>
+          <a
+            href="/sitemap"
+            className="font-mono hover:opacity-70 transition-opacity"
+            style={{ color: 'var(--text-muted)', fontSize: '0.6875rem' }}
+          >
+            Sitemap
+          </a>
+          <span style={{ color: 'var(--border)' }}>·</span>
+          <a
+            href="/privacy"
+            className="font-mono hover:opacity-70 transition-opacity"
+            style={{ color: 'var(--text-muted)', fontSize: '0.6875rem' }}
+          >
+            Privacy
+          </a>
+        </nav>
       </div>
 
       {/* Floating CTA Button - Hidden on Contact section */}

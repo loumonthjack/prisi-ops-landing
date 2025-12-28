@@ -63,7 +63,7 @@ export function FloatingCTA({ calendlyUrl, isVisible = true }: FloatingCTAProps)
         className="floating-cta"
         style={{
           position: 'fixed',
-          bottom: '7rem',
+          bottom: '10rem',
           right: '1rem',
           zIndex: 50,
           backgroundColor: 'var(--accent)',
