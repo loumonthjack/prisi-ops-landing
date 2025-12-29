@@ -154,9 +154,9 @@ export function VaultInterior({ currentSection, onNavigate }: VaultInteriorProps
       </main>
 
       {/* Fixed Bottom Navigation & Footer */}
-      <div className="fixed bottom-0 left-0 right-0 z-20 pb-4 md:pb-6" style={{ backgroundColor: 'var(--bg)' }}>
+      <div className="fixed bottom-0 left-0 right-0 z-20 pb-20 md:pb-6" style={{ backgroundColor: 'var(--bg)' }}>
         {/* Navigation Buttons */}
-        <div className="flex items-center justify-center gap-6 md:gap-8 mb-3">
+        <div className="flex items-center justify-center gap-6 md:gap-8 mb-2">
           <button
             onClick={handlePrevious}
             disabled={!canGoPrevious}
@@ -188,7 +188,6 @@ export function VaultInterior({ currentSection, onNavigate }: VaultInteriorProps
             </svg>
           </button>
         </div>
-        <br/>
         {/* Footer Links */}
         <nav className="flex flex-wrap justify-center gap-3 md:gap-6" aria-label="Legal">
           <a
